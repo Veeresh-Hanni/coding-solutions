@@ -1,9 +1,26 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
 
 
-def print_from_stream(n, stream=None):
-    if stream is None:
-        stream = EvenStream()
+n, m = map(int, input().split())
 
-    for _ in range(n):
-        print(stream.get_next())
+arr = list(map(int, input().split()))
 
+a = set(map(int, input().split()))
+
+b = set(map(int, input().split()))
+
+a_happines = 0
+b_happiness = 0
+
+for n in arr:
+    if n in a:
+        a_happines += 1
+    elif n in b:
+        b_happiness += 1
+
+print(a_happines - b_happiness)
+# print(n)
+# print(m)
+# print(arr)
+# print(a)
+# print(b)
