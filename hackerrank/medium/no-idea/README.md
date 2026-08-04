@@ -1,4 +1,4 @@
-# Default Arguments
+# No Idea!
 
 ![Difficulty](https://img.shields.io/badge/Difficulty-Medium-yellow)
 
@@ -28,18 +28,35 @@ Output a single integer, your total happiness.
 **Language:** Python  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-08-04T07:12:53.483Z  
+**Submitted:** 2026-08-04T07:33:23.749Z  
 
 ```py
+# Enter your code here. Read input from STDIN. Print output to STDOUT
 
 
-def print_from_stream(n, stream=None):
-    if stream is None:
-        stream = EvenStream()
+n, m = map(int, input().split())
 
-    for _ in range(n):
-        print(stream.get_next())
+arr = list(map(int, input().split()))
 
+a = set(map(int, input().split()))
+
+b = set(map(int, input().split()))
+
+a_happines = 0
+b_happiness = 0
+
+for n in arr:
+    if n in a:
+        a_happines += 1
+    elif n in b:
+        b_happiness += 1
+
+print(a_happines - b_happiness)
+# print(n)
+# print(m)
+# print(arr)
+# print(a)
+# print(b)
 
 ```
 
