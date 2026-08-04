@@ -28,7 +28,7 @@ Output a single integer, your total happiness.
 **Language:** Python  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-08-04T07:37:02.858Z  
+**Submitted:** 2026-08-04T07:36:20.018Z  
 
 ```py
 # Enter your code here. Read input from STDIN. Print output to STDOUT
@@ -46,17 +46,16 @@ b = set(map(int, input().split()))
 # print(a)
 # print(b)
 
-# happiness = 0
+happiness = 0
 
-# for num in arr:
-#     if num in a:
-#         happiness += 1
-#     elif num in b:
-#         happiness -= 1
+for num in arr:
+    if num in a:
+        happiness += 1
+    elif num in b:
+        happiness -= 1
 
-# print(happiness)
+print(happiness)
 
-print(sum((i in a) - (i in b) for i in arr))
 
 ```
 
