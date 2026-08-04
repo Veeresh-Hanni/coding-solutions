@@ -9,16 +9,25 @@ a = set(map(int, input().split()))
 
 b = set(map(int, input().split()))
 
-a_happines = 0
-b_happiness = 0
+# a_happines = 0
+# b_happiness = 0
 
-for n in arr:
-    if n in a:
-        a_happines += 1
-    elif n in b:
-        b_happiness += 1
+# for n in arr:
+#     if n in a:
+#         a_happines += 1
+#     elif n in b:
+#         b_happiness += 1
 
-print(a_happines - b_happiness)
+# print(a_happines - b_happiness)
+happiness = 0
+
+for num in arr:
+    if num in a:
+        happiness += 1
+    elif num in b:
+        happiness -= 1
+
+print(happiness)
 # print(n)
 # print(m)
 # print(arr)
