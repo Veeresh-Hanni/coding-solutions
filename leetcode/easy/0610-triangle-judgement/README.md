@@ -53,18 +53,25 @@ Output:
 ## Solution
 
 **Language:** SQL  
-**Runtime:** 349 ms (beats 18.92%)  
+**Runtime:** 348 ms (beats 19.40%)  
 **Memory:** 0B (beats 100.00%)  
-**Submitted:** 2026-08-05T15:12:34.526Z  
+**Submitted:** 2026-08-05T15:14:22.390Z  
 
 ```sql
 # Write your MySQL query statement below
-SELECT *,
-    CASE 
-        WHEN x + y > z AND x + z > y AND y + z > x THEN "Yes" 
-        ELSE "No"
-    END as triangle
-FROM Triangle;
+
+-- SELECT *,
+--     CASE 
+--         WHEN x + y > z AND x + z > y AND y + z > x THEN "Yes" 
+--         ELSE "No"
+--     END as triangle
+-- FROM Triangle;
+
+SELECT 
+    *, 
+    IF(x + y > z AND y + z > x AND  x + z > y, "Yes", "No") AS triangle 
+FROM 
+    Triangle;
 ```
 
 ---
