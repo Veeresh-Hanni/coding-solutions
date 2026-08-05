@@ -3,7 +3,6 @@
 
 SELECT class FROM (
     SELECT student, class FROM Courses
-    group by student 
-    order by COUNT(class) DESC
-    limit 1
+    group by class 
+    having count(class) >= 5
 ) t
