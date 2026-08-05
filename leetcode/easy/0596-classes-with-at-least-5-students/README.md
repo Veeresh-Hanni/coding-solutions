@@ -63,9 +63,9 @@ Explanation:
 ## Solution
 
 **Language:** SQL  
-**Runtime:** 78 ms  
-**Memory:** 0B  
-**Submitted:** 2026-08-05T14:38:38.572Z  
+**Runtime:** 410 ms (beats 14.10%)  
+**Memory:** 0B (beats 100.00%)  
+**Submitted:** 2026-08-05T14:38:44.387Z  
 
 ```sql
 # Write your MySQL query statement below
