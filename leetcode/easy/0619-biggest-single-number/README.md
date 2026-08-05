@@ -84,16 +84,17 @@ Explanation: There are no single numbers in the input table so we return null.
 ## Solution
 
 **Language:** SQL  
-**Runtime:** 105 ms  
-**Memory:** 0B  
-**Submitted:** 2026-08-05T15:21:23.242Z  
+**Runtime:** 511 ms (beats 21.46%)  
+**Memory:** 0B (beats 100.00%)  
+**Submitted:** 2026-08-05T15:29:03.822Z  
 
 ```sql
 # Write your MySQL query statement below
 
-SELECT MAX(num) num FROM  myNUmbers 
-GROUP BY num
-HAVING COUNT(num) = 1;
+SELECT MAX(num) as num FROM 
+    (SELECT num FROM myNUmbers 
+    GROUP BY num
+    HAVING COUNT(num) = 1) t
 ```
 
 ---
