@@ -63,9 +63,9 @@ Explanation:
 ## Solution
 
 **Language:** SQL  
-**Runtime:** 70 ms  
-**Memory:** 0B  
-**Submitted:** 2026-08-05T14:34:09.603Z  
+**Runtime:** 340 ms (beats 57.96%)  
+**Memory:** 0B (beats 100.00%)  
+**Submitted:** 2026-08-05T14:37:58.784Z  
 
 ```sql
 # Write your MySQL query statement below
@@ -73,9 +73,8 @@ Explanation:
 
 SELECT class FROM (
     SELECT student, class FROM Courses
-    group by student 
-    order by COUNT(class) DESC
-    limit 1
+    group by class 
+    having count(class) >= 5
 ) t
 
 ```
