@@ -117,20 +117,12 @@ According to orders 3 and 4 in the Orders table, it is easy to tell that only sa
 ## Solution
 
 **Language:** SQL  
-**Runtime:** 1567 ms (beats 43.02%)  
+**Runtime:** 1806 ms (beats 15.98%)  
 **Memory:** 0B (beats 100.00%)  
-**Submitted:** 2026-08-05T14:57:15.219Z  
+**Submitted:** 2026-08-05T14:57:59.604Z  
 
 ```sql
 # Write your MySQL query statement below
-
-
--- SELECT s.name from SalesPerson s
--- JOIN Orders o ON s.sales_id = o.sales_id
--- Join Company c ON c.com_id= o.com_id
--- WHERE c.name = 'RED' 
-# Write your MySQL query statement below
-
 
 SELECT s.name FROM SalesPerson s
 WHERE s.sales_id NOT IN (
