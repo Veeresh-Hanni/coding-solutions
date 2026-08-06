@@ -1,4 +1,4 @@
-# Revising Aggregations - Averages
+# Average Population
 
 ![Difficulty](https://img.shields.io/badge/Difficulty-Medium-yellow)
 
@@ -18,10 +18,10 @@ The **CITY** table is described as follows:
 **Language:** SQL  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-08-06T07:28:50.212Z  
+**Submitted:** 2026-08-06T07:30:29.280Z  
 
 ```sql
-SELECT AVG(IFNULL(POPULATION, 0)) FROM CITY WHERE DISTRICT = 'California';
+SELECT FLOOR(AVG(IFNULL(POPULATION, 0))) FROM city
 
 ```
 
