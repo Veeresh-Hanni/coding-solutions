@@ -1,4 +1,4 @@
-# Population Density Difference
+# The Blunder
 
 ![Difficulty](https://img.shields.io/badge/Difficulty-Medium-yellow)
 
@@ -27,10 +27,17 @@ The **EMPLOYEES** table is described as follows:
 **Language:** SQL  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-08-06T07:33:24.054Z  
+**Submitted:** 2026-08-06T07:37:49.661Z  
 
 ```sql
-SELECT MAX(POPULATION) - MIN(POPULATION) FROM city;
+/*
+Enter your query here.
+*/
+
+SELECT CEIL(
+    AVG(Salary) - AVG(REPLACE(Salary, '0', ''))
+)
+FROM Employees;
 
 ```
 
