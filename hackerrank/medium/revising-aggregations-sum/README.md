@@ -1,4 +1,4 @@
-# Revising Aggregations - The Count Function
+# Revising Aggregations - The Sum Function
 
 ![Difficulty](https://img.shields.io/badge/Difficulty-Medium-yellow)
 
@@ -18,11 +18,11 @@ The **CITY** table is described as follows:
 **Language:** SQL  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-08-06T07:25:17.160Z  
+**Submitted:** 2026-08-06T07:26:40.482Z  
 
 ```sql
-SELECT COUNT(name)FROM city
-WHERE POPULATION > 100000;
+SELECT SUM(population) FROM CITY
+WHERE DISTRICT = 'California';
 
 ```
 
