@@ -2,10 +2,8 @@
 Enter your query here.
 */
 
-SELECT ROUND(LONG_W, 4)
-FROM STATION
-WHERE LAT_N = (
-    SELECT MIN(LAT_N)
-    FROM STATION
-    WHERE LAT_N > 38.7780
-);
+
+SELECT 
+    ROUND((MAX(LAT_N) + MAX(LONG_W)) - (MIN(LAT_N) + MIN(LONG_W)),4)
+    
+FROM STATION;
