@@ -3,7 +3,11 @@ Enter your query here.
 */
 
 
-SELECT 
-    ROUND((MAX(LAT_N) + MAX(LONG_W)) - (MIN(LAT_N) + MIN(LONG_W)),4)
-    
+SELECT ROUND(
+    SQRT(
+        POW(MAX(LAT_N) - MIN(LAT_N), 2) +
+        POW(MAX(LONG_W) - MIN(LONG_W), 2)
+    ),
+    4
+)
 FROM STATION;
