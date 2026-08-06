@@ -2,7 +2,10 @@
 Enter your query here.
 */
 
-SELECT CEIL(
-    AVG(Salary) - AVG(REPLACE(Salary, '0', ''))
-)
-FROM Employees;
+SELECT
+    salary * months AS earnings,
+    COUNT(*) AS employee_count
+FROM Employee
+GROUP BY earnings
+ORDER BY earnings DESC
+LIMIT 1;
