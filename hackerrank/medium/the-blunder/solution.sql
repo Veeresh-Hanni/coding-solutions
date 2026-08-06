@@ -1,1 +1,8 @@
-SELECT MAX(POPULATION) - MIN(POPULATION) FROM city;
+/*
+Enter your query here.
+*/
+
+SELECT CEIL(
+    AVG(Salary) - AVG(REPLACE(Salary, '0', ''))
+)
+FROM Employees;
