@@ -1,4 +1,4 @@
-# Japan Population
+# Population Density Difference
 
 ![Difficulty](https://img.shields.io/badge/Difficulty-Medium-yellow)
 
@@ -23,10 +23,10 @@ The **CITY** table is described as follows:
 **Language:** SQL  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-08-06T07:32:29.527Z  
+**Submitted:** 2026-08-06T07:33:20.205Z  
 
 ```sql
-SELECT SUM(POPULATION) FROM CITY WHERE COUNTRYCODE = 'JPN';
+SELECT MAX(POPULATION) - MIN(POPULATION) FROM city;
 
 ```
 
