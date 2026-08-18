@@ -31,7 +31,7 @@ def sockMerchant(n, ar):
         pairs[el] = pairs.get(el, 0) + 1
     
     for v in pairs.values():
-        count = count + v // 2
+        count += v // 2
     return count
         
 
