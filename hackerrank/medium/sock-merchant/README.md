@@ -43,7 +43,7 @@ The second line contains $n$ space-separated integers, $ar[i]$, the colors of th
 **Language:** Python  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-08-18T10:18:49.240Z  
+**Submitted:** 2026-08-18T10:19:40.430Z  
 
 ```py
 #!/bin/python3
@@ -79,7 +79,7 @@ def sockMerchant(n, ar):
         pairs[el] = pairs.get(el, 0) + 1
     
     for v in pairs.values():
-        count = count + v // 2
+        count += v // 2
     return count
         
 
