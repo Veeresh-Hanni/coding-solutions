@@ -1,19 +1,25 @@
 /*
 Enter your query here.
 */
-
-SELECT w.id, wp.age, w.coins_needed, w.power
-FROM Wands w
-JOIN Wands_Property wp
-    ON w.code = wp.code
-WHERE wp.is_evil = 0
-  AND w.coins_needed = (
-      SELECT MIN(w2.coins_needed)
-      FROM Wands w2
-      JOIN Wands_Property wp2
-          ON w2.code = wp2.code
-      WHERE wp2.is_evil = 0
-        AND wp2.age = wp.age
-        AND w2.power = w.power
-  )
-ORDER BY w.power DESC, wp.age DESC;
+SELECT
+    h.hacker_id,
+    h.name,
+    x.total_score
+FROM Hackers h
+JOIN (
+    SELECT
+        hacker_id,
+        SUM(max_score) AS total_score
+    FROM (
+        SELECT
+            hacker_id,
+            challenge_id,
+            MAX(score) AS max_score
+        FROM Submissions
+        GROUP BY hacker_id, challenge_id
+    ) s
+    GROUP BY hacker_id
+) x
+ON h.hacker_id = x.hacker_id
+WHERE x.total_score > 0
+ORDER BY x.total_score DESC, h.hacker_id ASC;
