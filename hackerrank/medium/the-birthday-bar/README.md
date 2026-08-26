@@ -56,7 +56,7 @@ The third line contains two space-separated integers, $d$ and $m$, Ron's birth d
 **Language:** Python  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-08-26T06:08:20.883Z  
+**Submitted:** 2026-08-26T06:09:24.096Z  
 
 ```py
 #!/bin/python3
@@ -80,29 +80,29 @@ import sys
 def birthday(s, d, m):
     
     # Approach 1 Brite force
-    count = 0
-    n = len(s)
+    # count = 0
+    # n = len(s)
     
-    for idx in range(n - m + 1):
-        if sum(s[idx:idx+m]) == d:
-            count += 1
-    return count
+    # for idx in range(n - m + 1):
+    #     if sum(s[idx:idx+m]) == d:
+    #         count += 1
+    # return count
     
     # Approach 2 sliding window
-    # count = 0
-    # window_sum = sum(s[:m])
+    count = 0
+    window_sum = sum(s[:m])
 
-    # if window_sum == d:
-    #     count += 1
+    if window_sum == d:
+        count += 1
 
-    # for i in range(m, len(s)):
-    #     window_sum += s[i]       # add right
-    #     window_sum -= s[i - m]  # remove left
+    for i in range(m, len(s)):
+        window_sum += s[i]       # add right
+        window_sum -= s[i - m]  # remove left
 
-    #     if window_sum == d:
-    #         count += 1
+        if window_sum == d:
+            count += 1
 
-    # return count    
+    return count    
     
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
