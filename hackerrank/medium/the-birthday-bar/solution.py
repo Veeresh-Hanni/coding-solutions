@@ -30,11 +30,12 @@ def birthday(s, d, m):
     # Approach 2 sliding window
     count = 0
     window_sum = sum(s[:m])
-
+    n = len(s)
+    
     if window_sum == d:
         count += 1
 
-    for i in range(m, len(s)):
+    for i in range(m, n):
         window_sum += s[i]       # add right
         window_sum -= s[i - m]  # remove left
 
