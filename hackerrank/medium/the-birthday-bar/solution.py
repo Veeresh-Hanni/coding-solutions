@@ -17,20 +17,32 @@ import sys
 #
 
 def birthday(s, d, m):
+    
+    # Approach 1 Brite force
     count = 0
-    window_sum = sum(s[:m])
-
-    if window_sum == d:
-        count += 1
-
-    for i in range(m, len(s)):
-        window_sum += s[i]       # add right
-        window_sum -= s[i - m]  # remove left
-
-        if window_sum == d:
+    n = len(s)
+    
+    for idx in range(n - m + 1):
+        if sum(s[idx:idx+m]) == d:
             count += 1
+    return count
+    
+    # Approach 2 sliding window
+    # count = 0
+    # window_sum = sum(s[:m])
 
-    return count    
+    # if window_sum == d:
+    #     count += 1
+
+    # for i in range(m, len(s)):
+    #     window_sum += s[i]       # add right
+    #     window_sum -= s[i - m]  # remove left
+
+    #     if window_sum == d:
+    #         count += 1
+
+    # return count    
+    
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
