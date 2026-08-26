@@ -7,40 +7,45 @@ import re
 import sys
 
 #
-# Complete the 'breakingRecords' function below.
+# Complete the 'birthday' function below.
 #
-# The function is expected to return an INTEGER_ARRAY.
-# The function accepts INTEGER_ARRAY scores as parameter.
+# The function is expected to return an INTEGER.
+# The function accepts following parameters:
+#  1. INTEGER_ARRAY s
+#  2. INTEGER d
+#  3. INTEGER m
 #
 
-def breakingRecords(scores):
-    # Write your code here
-    max_num = float('-inf')
-    min_num = float('inf')
-    
-    max_count = 0
-    min_count = 0
-    
-    for s in scores:
-        if s > max_num:
-            max_num = s
-            max_count += 1
-        if s < min_num :
-            min_num = s
-            min_count += 1
-    
-    return [max_count-1,min_count-1]
-    
+def birthday(s, d, m):
+    count = 0
+    window_sum = sum(s[:m])
+
+    if window_sum == d:
+        count += 1
+
+    for i in range(m, len(s)):
+        window_sum += s[i]       # add right
+        window_sum -= s[i - m]  # remove left
+
+        if window_sum == d:
+            count += 1
+
+    return count    
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
     n = int(input().strip())
 
-    scores = list(map(int, input().rstrip().split()))
+    s = list(map(int, input().rstrip().split()))
 
-    result = breakingRecords(scores)
+    first_multiple_input = input().rstrip().split()
 
-    fptr.write(' '.join(map(str, result)))
-    fptr.write('\n')
+    d = int(first_multiple_input[0])
+
+    m = int(first_multiple_input[1])
+
+    result = birthday(s, d, m)
+
+    fptr.write(str(result) + '\n')
 
     fptr.close()
