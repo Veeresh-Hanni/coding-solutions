@@ -56,7 +56,7 @@ The third line contains two space-separated integers, $d$ and $m$, Ron's birth d
 **Language:** Python  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-08-26T06:09:24.096Z  
+**Submitted:** 2026-08-26T06:15:28.105Z  
 
 ```py
 #!/bin/python3
@@ -91,11 +91,12 @@ def birthday(s, d, m):
     # Approach 2 sliding window
     count = 0
     window_sum = sum(s[:m])
-
+    n = len(s)
+    
     if window_sum == d:
         count += 1
 
-    for i in range(m, len(s)):
+    for i in range(m, n):
         window_sum += s[i]       # add right
         window_sum -= s[i - m]  # remove left
 
