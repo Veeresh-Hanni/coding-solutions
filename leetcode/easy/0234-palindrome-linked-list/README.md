@@ -38,9 +38,9 @@ Output: false
 ## Solution
 
 **Language:** Python  
-**Runtime:** 35 ms (beats 55.00%)  
-**Memory:** 53.8 MB (beats 5.48%)  
-**Submitted:** 2026-08-31T01:03:04.964Z  
+**Runtime:** 0 ms  
+**Memory:** 19.4 MB  
+**Submitted:** 2026-08-31T01:03:34.435Z  
 
 ```py
 # Definition for singly-linked list.
@@ -52,7 +52,7 @@ class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
 
         # Approach 1 using stack
-        stack = []
+        """stack = []
         curr = head
 
         # Push all values onto stack
@@ -70,14 +70,14 @@ class Solution:
         # return True
 
         # simple using list slice
-        return stack == stack[::-1]
+        return stack == stack[::-1]"""
 
 
 
         # Approach 2 using stack and add only half data
         # Step 1: Find length
         
-        """length = 0
+        length = 0
         curr = head
         while curr:
             length += 1
@@ -100,7 +100,7 @@ class Solution:
                 return False
             curr = curr.next
 
-        return True""" 
+        return True
 
 
 
