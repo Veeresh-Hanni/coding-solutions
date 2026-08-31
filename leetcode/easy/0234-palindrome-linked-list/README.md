@@ -38,9 +38,9 @@ Output: false
 ## Solution
 
 **Language:** Python  
-**Runtime:** 34 ms (beats 57.43%)  
-**Memory:** 53.9 MB (beats 5.48%)  
-**Submitted:** 2026-08-31T01:03:42.640Z  
+**Runtime:** 36 ms (beats 50.67%)  
+**Memory:** 42.1 MB (beats 96.48%)  
+**Submitted:** 2026-08-31T01:04:13.851Z  
 
 ```py
 # Definition for singly-linked list.
@@ -77,7 +77,7 @@ class Solution:
         # Approach 2 using stack and add only half data
         # Step 1: Find length
         
-        length = 0
+        """length = 0
         curr = head
         while curr:
             length += 1
@@ -100,12 +100,12 @@ class Solution:
                 return False
             curr = curr.next
 
-        return True
+        return True"""
 
 
 
         # approach 3 find middle and reverse second half and compare
-        """def reverse(head):
+        def reverse(head):
             prev = None
             curr = head
             while curr:
@@ -133,7 +133,7 @@ class Solution:
             first_half = first_half.next
             second_half = second_half.next
 
-        return True"""
+        return True
 ```
 
 ---
