@@ -7,7 +7,7 @@ class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
 
         # Approach 1 using stack
-        stack = []
+        """stack = []
         curr = head
 
         # Push all values onto stack
@@ -25,14 +25,14 @@ class Solution:
         # return True
 
         # simple using list slice
-        return stack == stack[::-1]
+        return stack == stack[::-1]"""
 
 
 
         # Approach 2 using stack and add only half data
         # Step 1: Find length
         
-        """length = 0
+        length = 0
         curr = head
         while curr:
             length += 1
@@ -55,7 +55,7 @@ class Solution:
                 return False
             curr = curr.next
 
-        return True""" 
+        return True
 
 
 
