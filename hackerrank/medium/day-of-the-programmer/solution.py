@@ -1,55 +1,44 @@
 #!/bin/python3
 
+import math
 import os
+import random
+import re
+import sys
 
 #
-# Complete the 'migratoryBirds' function below.
+# Complete the 'dayOfProgrammer' function below.
 #
-# The function is expected to return an INTEGER.
-# The function accepts INTEGER_ARRAY arr as parameter.
+# The function is expected to return a STRING.
+# The function accepts INTEGER year as parameter.
 #
 
-def migratoryBirds(arr):
+def dayOfProgrammer(year):
     # Write your code here
-    # freq = {}
-    
-    # for a in arr:
-    #     freq[a] = freq.get(a, 0) + 1
-    
-    
-    # max_id = 0
-    # max_val = float('-inf')
-    # for k, v in freq.items():
+    days_in_8m_year = 243
 
-    #     if v > max_val or (v == max_val and k < max_id):
-    #         max_id = k
-    #         max_val = v
-    # return max_id
+    if year == 1918:
+        return f"26.09.{year}"
+
+    if year < 1918:
+        # Julian calendar
+        if year % 4 == 0:
+            days_in_8m_year += 1
+    else:
+        # Gregorian calendar
+        if year % 400 == 0 or (year % 4 == 0 and year % 100 != 0):
+            days_in_8m_year += 1
+
+    return f"{256 - days_in_8m_year:02d}.09.{year}"
     
-    freq = [0] * 6
 
-    for bird in arr:
-        freq[bird] += 1
-
-    max_count = 0
-    answer = 0
-
-    for bird in range(1, 6):
-        if freq[bird] > max_count:
-            max_count = freq[bird]
-            answer = bird
-
-    return answer
-    
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
-    arr_count = int(input().strip())
+    year = int(input().strip())
 
-    arr = list(map(int, input().rstrip().split()))
+    result = dayOfProgrammer(year)
 
-    result = migratoryBirds(arr)
-
-    fptr.write(str(result) + '\n')
+    fptr.write(result + '\n')
 
     fptr.close()
