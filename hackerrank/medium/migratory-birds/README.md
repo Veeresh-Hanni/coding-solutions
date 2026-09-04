@@ -1,4 +1,4 @@
-# Divisible Sum Pairs
+# Migratory Birds
 
 ![Difficulty](https://img.shields.io/badge/Difficulty-Medium-yellow)
 
@@ -40,50 +40,45 @@ The second line describes $arr$ as $n$ space-separated integers, each a type num
 **Language:** Python  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-09-04T14:20:00.346Z  
+**Submitted:** 2026-09-04T14:38:49.058Z  
 
 ```py
 #!/bin/python3
 
-import math
 import os
-import random
-import re
-import sys
 
 #
-# Complete the 'divisibleSumPairs' function below.
+# Complete the 'migratoryBirds' function below.
 #
 # The function is expected to return an INTEGER.
-# The function accepts following parameters:
-#  1. INTEGER n
-#  2. INTEGER k
-#  3. INTEGER_ARRAY ar
+# The function accepts INTEGER_ARRAY arr as parameter.
 #
 
-def divisibleSumPairs(n, k, ar):
+def migratoryBirds(arr):
     # Write your code here
+    freq = {}
     
-    count_pairs = 0
+    for a in arr:
+        freq[a] = freq.get(a, 0) + 1
     
-    for i in range(n):
-        for j in range(i+1, n):
-            if (ar[i] + ar[j]) % k == 0 and i < j:
-                count_pairs += 1
-    return count_pairs
+    
+    max_id = 0
+    max_val = float('-inf')
+    for k, v in freq.items():
+
+        if v > max_val or (v == max_val and k < max_id):
+            max_id = k
+            max_val = v
+    return max_id
     
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
-    first_multiple_input = input().rstrip().split()
+    arr_count = int(input().strip())
 
-    n = int(first_multiple_input[0])
+    arr = list(map(int, input().rstrip().split()))
 
-    k = int(first_multiple_input[1])
-
-    ar = list(map(int, input().rstrip().split()))
-
-    result = divisibleSumPairs(n, k, ar)
+    result = migratoryBirds(arr)
 
     fptr.write(str(result) + '\n')
 
