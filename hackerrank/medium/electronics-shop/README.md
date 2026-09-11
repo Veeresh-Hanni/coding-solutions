@@ -46,7 +46,7 @@ The third line contains $m$ space-separated integers $drives$, the prices of the
 **Language:** Python  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-09-11T15:11:20.193Z  
+**Submitted:** 2026-09-11T15:11:35.713Z  
 
 ```py
 #!/bin/python3
@@ -69,11 +69,9 @@ def getMoneySpent(keyboards, drives, b):
     while d_idx < n:
         for k in range(len(keyboards)):
             total = drives[d_idx] + keyboards[k] 
-            if total <= b and total > expensive:
-                
+            if total <= b and total > expensive:  
                 expensive = total
-                
-                 
+                    
         d_idx += 1
     return -1 if expensive < 1 else expensive
 
