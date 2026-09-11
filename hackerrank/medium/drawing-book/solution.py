@@ -12,9 +12,10 @@ import os
 def pageCount(n, p):
     # Write your code here
     front = p // 2
-    back = (n // 2) - (p // 2)
+    back = (n // 2) - front
     
     return min(front, back)
+    
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
