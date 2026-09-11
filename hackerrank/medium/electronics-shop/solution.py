@@ -18,11 +18,9 @@ def getMoneySpent(keyboards, drives, b):
     while d_idx < n:
         for k in range(len(keyboards)):
             total = drives[d_idx] + keyboards[k] 
-            if total <= b and total > expensive:
-                
+            if total <= b and total > expensive:  
                 expensive = total
-                
-                 
+                    
         d_idx += 1
     return -1 if expensive < 1 else expensive
 
