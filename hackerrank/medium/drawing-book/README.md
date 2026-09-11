@@ -1,4 +1,4 @@
-# Bill Division
+# Drawing Book
 
 ![Difficulty](https://img.shields.io/badge/Difficulty-Medium-yellow)
 
@@ -51,52 +51,38 @@ The second line contains an integer, $p$, the page to turn to.
 **Language:** Python  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-09-11T14:03:17.911Z  
+**Submitted:** 2026-09-11T14:29:24.227Z  
 
 ```py
 #!/bin/python3
-
-import math
 import os
-import random
-import re
-import sys
 
 #
-# Complete the 'bonAppetit' function below.
-#
+# Complete the 'pageCount' function below.
+# The function is expected to return an INTEGER.
 # The function accepts following parameters:
-#  1. INTEGER_ARRAY bill
-#  2. INTEGER k
-#  3. INTEGER b
+#  1. INTEGER n
+#  2. INTEGER p
 #
 
-def bonAppetit(bill, k, b):
+def pageCount(n, p):
     # Write your code here
-    anna_amount = 0
+    front = p // 2
+    back = (n // 2) - (p // 2)
     
-    for i in range(len(bill)):
-        if i != k:
-            anna_amount += bill[i]
-    
-    if  (anna_amount // 2)  == b:
-        print("Bon Appetit")
-    else:
-        print(b - (anna_amount // 2))
-
-
+    return min(front, back)
 if __name__ == '__main__':
-    first_multiple_input = input().rstrip().split()
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
-    n = int(first_multiple_input[0])
+    n = int(input().strip())
 
-    k = int(first_multiple_input[1])
+    p = int(input().strip())
 
-    bill = list(map(int, input().rstrip().split()))
+    result = pageCount(n, p)
 
-    b = int(input().strip())
+    fptr.write(str(result) + '\n')
 
-    bonAppetit(bill, k, b)
+    fptr.close()
 
 ```
 
