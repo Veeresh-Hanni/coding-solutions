@@ -51,7 +51,7 @@ The second line contains an integer, $p$, the page to turn to.
 **Language:** Python  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-09-11T14:29:24.227Z  
+**Submitted:** 2026-09-11T14:30:44.665Z  
 
 ```py
 #!/bin/python3
@@ -68,9 +68,10 @@ import os
 def pageCount(n, p):
     # Write your code here
     front = p // 2
-    back = (n // 2) - (p // 2)
+    back = (n // 2) - front
     
     return min(front, back)
+    
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
