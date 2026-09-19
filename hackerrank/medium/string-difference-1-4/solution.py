@@ -6,50 +6,37 @@ import random
 import re
 import sys
 
-#
-# Complete the 'getRemovableIndices' function below.
-#
-# The function is expected to return an INTEGER_ARRAY.
-# The function accepts following parameters:
-#  1. STRING str1
-#  2. STRING str2
-#
-
 def getRemovableIndices(str1, str2):
-
-    freq1 = {}
-    freq2 = {}
-
-    for char in str1:
-        freq1[char] = freq1.get(char, 0) + 1
-
-    for char in str2:
-        freq2[char] = freq2.get(char, 0) + 1
-
-    removal_char = None
-
-    for char in freq1:
-        if freq2[char] == 1:
-            return [-1]
-        
-        elif freq1[char] == freq2.get(char, 0) + 1:
-            removal_char = char
-            break
-
-    if removal_char is None:
+    n1 = len(str1)
+    n2 = len(str2)
+    
+    if n1 != n2 + 1:
         return [-1]
-
-    result = []
-
-    for idx in range(len(str1)):
-        if str1[idx] == removal_char:
-            result.append(idx)
-
-    return result
-
+        
+    # Find the longest common prefix length from the left
+    left = 0
+    while left < n2 and str1[left] == str2[left]:
+        left += 1
+        
+    # Find the longest common suffix length from the right
+    right = 0
+    while right < n2 and str1[n1 - 1 - right] == str2[n2 - 1 - right]:
+        right += 1
+        
+    # If prefix and suffix don't cover enough characters, it's impossible
+    if left + right < n2:
+        return [-1]
+        
+    # The valid indices to remove lie in the range [n2 - right, left]
+    start = n2 - right
+    end = left
+    
+    # Since all characters in this overlapping mismatch region are identical,
+    # every index in this range is a valid removable index.
+    return list(range(start, end + 1))
+     
 if __name__ == '__main__':
     str1 = input()
-
     str2 = input()
 
     result = getRemovableIndices(str1, str2)
