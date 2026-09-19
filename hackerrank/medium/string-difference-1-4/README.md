@@ -85,7 +85,7 @@ There is no way to make str1 equal to str2 by removing any 1 character.
 **Language:** Python  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-09-19T06:17:21.143Z  
+**Submitted:** 2026-09-19T06:17:21.852Z  
 
 ```py
 #!/bin/python3
