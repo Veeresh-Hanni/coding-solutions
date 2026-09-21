@@ -37,20 +37,17 @@ Output: 9
 
 **Language:** Python  
 **Runtime:** 7 ms (beats 72.01%)  
-**Memory:** 21.1 MB (beats 50.38%)  
-**Submitted:** 2026-09-21T02:46:17.406Z  
+**Memory:** 21.1 MB (beats 25.49%)  
+**Submitted:** 2026-09-21T02:52:07.921Z  
 
 ```py
 class Solution:
     def trap(self, height: list[int]) -> int:
         # n = len(height)
         # totalwater = 0
-
+        # leftMax = height[0]
+        # rightMax = height[n-1]
         # for i in range(n):
-
-        #     leftMax = 0
-        #     rightMax = 0
-
         #     for j in range(i+1):
         #         leftMax = max(leftMax, height[j])
             
