@@ -2,12 +2,9 @@ class Solution:
     def trap(self, height: list[int]) -> int:
         # n = len(height)
         # totalwater = 0
-
+        # leftMax = height[0]
+        # rightMax = height[n-1]
         # for i in range(n):
-
-        #     leftMax = 0
-        #     rightMax = 0
-
         #     for j in range(i+1):
         #         leftMax = max(leftMax, height[j])
             
