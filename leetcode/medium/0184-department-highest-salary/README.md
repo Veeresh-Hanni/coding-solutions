@@ -83,42 +83,42 @@ Explanation: Max and Jim both have the highest salary in the IT department and H
 ## Solution
 
 **Language:** SQL  
-**Runtime:** 1072 ms (beats 30.05%)  
+**Runtime:** 801 ms (beats 57.81%)  
 **Memory:** 0B (beats 100.00%)  
-**Submitted:** 2026-10-29T08:38:36.105Z  
+**Submitted:** 2026-10-29T08:37:21.707Z  
 
 ```sql
 # Write your MySQL query statement below
 
 
--- SELECT Department, Employee, hsalary as Salary
--- FROM (
---     SELECT 
---         d.name AS Department,
---         e.name AS Employee,
---         e.salary,
---         MAX(e.salary) OVER (
---             PARTITION BY d.name
---         ) AS hsalary
---     FROM Employee e
---     JOIN Department d
---         ON e.departmentId = d.id
--- ) t
--- WHERE salary = hsalary;
+SELECT Department, Employee, hsalary as Salary
+FROM (
+    SELECT 
+        d.name AS Department,
+        e.name AS Employee,
+        e.salary,
+        MAX(e.salary) OVER (
+            PARTITION BY d.name
+        ) AS hsalary
+    FROM Employee e
+    JOIN Department d
+        ON e.departmentId = d.id
+) t
+WHERE salary = hsalary;
 
 
-SELECT d.name as Department, 
-       e.name as Employee,
-       e.salary as Salary
-    FROM
-    (
-        SELECT 
-        e.*,
-        RANK() OVER (PARTITION BY e.departmentId ORDER BY e.salary DESC) as rnk
-        FROM employee e 
-    ) e 
-    JOIN department d ON e.departmentId = d.id
-    WHERE rnk = 1
+-- SELECT d.name as Department, 
+--        e.name as Employee,
+--        e.salary as Salary
+--     FROM
+--     (
+--         SELECT 
+--         e.*,
+--         RANK() OVER (PARTITION BY e.departmentId ORDER BY e.salary DESC) as rnk
+--         FROM employee e 
+--     ) e 
+--     JOIN department d ON e.departmentId = d.id
+--     WHERE rnk = 1
 ```
 
 ---
