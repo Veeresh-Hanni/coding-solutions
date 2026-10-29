@@ -83,9 +83,9 @@ Explanation: Max and Jim both have the highest salary in the IT department and H
 ## Solution
 
 **Language:** SQL  
-**Runtime:** 777 ms (beats 60.88%)  
+**Runtime:** 1072 ms (beats 30.05%)  
 **Memory:** 0B (beats 100.00%)  
-**Submitted:** 2026-10-29T08:36:59.430Z  
+**Submitted:** 2026-10-29T08:38:36.105Z  
 
 ```sql
 # Write your MySQL query statement below
@@ -106,7 +106,6 @@ Explanation: Max and Jim both have the highest salary in the IT department and H
 -- ) t
 -- WHERE salary = hsalary;
 
-# Write your MySQL query statement below
 
 SELECT d.name as Department, 
        e.name as Employee,
