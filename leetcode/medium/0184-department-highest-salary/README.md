@@ -83,24 +83,13 @@ Explanation: Max and Jim both have the highest salary in the IT department and H
 ## Solution
 
 **Language:** SQL  
-**Runtime:** 1780 ms (beats 5.01%)  
+**Runtime:** 1769 ms (beats 5.01%)  
 **Memory:** 0B (beats 100.00%)  
-**Submitted:** 2026-10-29T08:35:52.792Z  
+**Submitted:** 2026-10-29T08:36:09.862Z  
 
 ```sql
 # Write your MySQL query statement below
--- SELECT department, employee, hsalary
--- FROM (
---     SELECT d.name as department , e.name as employee, 
---             MAX(e.salary) OVER(
---                 PARTITION BY d.name
---             )as hsalary
 
---     FROM Employee e
-
---     JOIN department d On e.departmentId = d.id) t
-
--- WHERE e.salary = hsalary;
 
 SELECT Department, Employee, hsalary as Salary
 FROM (
