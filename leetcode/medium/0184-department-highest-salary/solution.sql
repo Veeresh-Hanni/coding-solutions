@@ -1,16 +1,5 @@
 # Write your MySQL query statement below
--- SELECT department, employee, hsalary
--- FROM (
---     SELECT d.name as department , e.name as employee, 
---             MAX(e.salary) OVER(
---                 PARTITION BY d.name
---             )as hsalary
 
---     FROM Employee e
-
---     JOIN department d On e.departmentId = d.id) t
-
--- WHERE e.salary = hsalary;
 
 SELECT Department, Employee, hsalary as Salary
 FROM (
