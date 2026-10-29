@@ -16,7 +16,6 @@
 -- ) t
 -- WHERE salary = hsalary;
 
-# Write your MySQL query statement below
 
 SELECT d.name as Department, 
        e.name as Employee,
