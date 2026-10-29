@@ -83,9 +83,9 @@ Explanation: Max and Jim both have the highest salary in the IT department and H
 ## Solution
 
 **Language:** SQL  
-**Runtime:** 801 ms (beats 57.81%)  
+**Runtime:** 1190 ms (beats 16.31%)  
 **Memory:** 0B (beats 100.00%)  
-**Submitted:** 2026-10-29T08:37:21.707Z  
+**Submitted:** 2026-10-29T08:37:30.069Z  
 
 ```sql
 # Write your MySQL query statement below
