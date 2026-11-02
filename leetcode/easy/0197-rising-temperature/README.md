@@ -59,17 +59,33 @@ In 2015-01-04, the temperature was higher than the previous day (20 -> 30).
 ## Solution
 
 **Language:** SQL  
-**Runtime:** 506 ms (beats 63.09%)  
+**Runtime:** 786 ms (beats 7.87%)  
 **Memory:** 0B (beats 100.00%)  
-**Submitted:** 2026-11-02T04:40:06.337Z  
+**Submitted:** 2026-11-02T04:42:17.974Z  
 
 ```sql
 # Write your MySQL query statement below
-SELECT w1.id
-FROM Weather w1
-JOIN Weather w2
-  ON w1.recordDate = w2.recordDate + INTERVAL 1 DAY
-WHERE w1.temperature > w2.temperature;
+-- SELECT w1.id
+-- FROM Weather w1
+-- JOIN Weather w2
+--   ON w1.recordDate = w2.recordDate + INTERVAL 1 DAY
+-- WHERE w1.temperature > w2.temperature;
+
+SELECT id
+FROM (
+    SELECT id,
+           recordDate,
+           temperature,
+           LAG(temperature) OVER (
+               ORDER BY recordDate
+           ) AS previous_temperature,
+           LAG(recordDate) OVER (
+               ORDER BY recordDate
+           ) AS previous_date
+    FROM Weather
+) w
+WHERE temperature > previous_temperature
+  AND recordDate = previous_date + INTERVAL 1 DAY;
 ```
 
 ---
