@@ -69,26 +69,43 @@ So, the result is the sum of tiv_2016 of the first and last record, which is 45.
 ## Solution
 
 **Language:** SQL  
-**Runtime:** 903 ms (beats 13.47%)  
+**Runtime:** 1296 ms (beats 5.02%)  
 **Memory:** 0B (beats 100.00%)  
-**Submitted:** 2026-11-02T10:00:42.398Z  
+**Submitted:** 2026-11-02T10:06:43.054Z  
 
 ```sql
 # Write your MySQL query statement below
-SELECT ROUND(SUM(tiv_2016), 2) as tiv_2016
-FROM Insurance
-WHERE tiv_2015 IN (
+-- SELECT ROUND(SUM(tiv_2016), 2) as tiv_2016
+-- FROM Insurance
+-- WHERE tiv_2015 IN (
+--     SELECT tiv_2015 
+--     FROM Insurance 
+--     GROUP BY tiv_2015 
+--     HAVING COUNT(*) > 1
+-- )
+-- AND (lat, lon) IN (
+--     SELECT lat, lon 
+--     FROM Insurance 
+--     GROUP BY lat, lon 
+--     HAVING COUNT(*) = 1
+-- );
+
+WITH common_tiv_2015 AS (
     SELECT tiv_2015 
     FROM Insurance 
     GROUP BY tiv_2015 
     HAVING COUNT(*) > 1
-)
-AND (lat, lon) IN (
-    SELECT lat, lon 
-    FROM Insurance 
-    GROUP BY lat, lon 
-    HAVING COUNT(*) = 1
-);
+), 
+unique_lat_lon AS(
+    SELECT lat,lon
+    FROM Insurance
+    GROUP BY lat,lon
+    HAVING COUNT(pid) = 1)
+
+SELECT ROUND(SUM(tiv_2016), 2) as tiv_2016
+FROM Insurance i
+JOIN common_tiv_2015 ct ON i.tiv_2015 = ct.tiv_2015
+JOIN unique_lat_lon ul ON i.lat = ul.lat AND i.lon = ul.lon;
 ```
 
 ---
