@@ -105,9 +105,9 @@ In the Sales department:
 ## Solution
 
 **Language:** SQL  
-**Runtime:** 1172 ms (beats 50.31%)  
+**Runtime:** 1275 ms (beats 39.63%)  
 **Memory:** 0B (beats 100.00%)  
-**Submitted:** 2026-11-02T09:35:13.056Z  
+**Submitted:** 2026-11-02T09:35:56.087Z  
 
 ```sql
 # Write your MySQL query statement below
@@ -115,11 +115,12 @@ In the Sales department:
 SELECT Department, Employee, Salary
 FROM 
     (SELECT d.name AS Department, e.name AS Employee, e.salary AS Salary,
-            DENSE_RANK() OVER(PARTITION BY d.name
+            DENSE_RANK() OVER(
+                PARTITION BY d.name
+                ORDER by e.salary DESC )  as drk
 
-            ORDER by e.salary DESC) as drk
-
-    FROM Employee e JOIN Department d on e.departmentId = d.id) as x
+    FROM Employee e 
+    JOIN Department d on e.departmentId = d.id ) as x
 
 WHERE drk <= 3;
 ```
