@@ -56,17 +56,17 @@ Explanation: Joe is the only employee who earns more than his manager.
 ## Solution
 
 **Language:** SQL  
-**Runtime:** 532 ms (beats 19.18%)  
+**Runtime:** 508 ms (beats 22.37%)  
 **Memory:** 0B (beats 100.00%)  
-**Submitted:** 2026-11-02T08:49:05.555Z  
+**Submitted:** 2026-11-02T08:51:20.700Z  
 
 ```sql
 # Write your MySQL query statement below
-SELECT e2.name as Employee From employee e1 
+SELECT e1.name as Employee From employee e1 
 
-JOIN Employee e2 ON e1.id = e2.managerId
+JOIN Employee e2 ON e1.managerId = e2.id
 
-WHERE e2.salary > e1.salary;
+WHERE e1.salary > e2.salary;
 ```
 
 ---
