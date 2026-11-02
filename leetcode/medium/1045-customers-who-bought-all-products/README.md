@@ -79,15 +79,15 @@ The customers who bought all the products (5 and 6) are customers with IDs 1 and
 ## Solution
 
 **Language:** SQL  
-**Runtime:** 133 ms  
-**Memory:** 0B  
-**Submitted:** 2026-11-02T10:32:25.921Z  
+**Runtime:** 707 ms (beats 28.72%)  
+**Memory:** 0B (beats 100.00%)  
+**Submitted:** 2026-11-02T10:34:48.743Z  
 
 ```sql
 # Write your MySQL query statement below
 SELECT customer_id from Customer
 GROUP BY customer_id 
-HAVING COUNT(*) = (
+HAVING COUNT(DISTINCT product_key) = (
     SELECT COUNT(p.product_key) 
     FROM Product p
 )
