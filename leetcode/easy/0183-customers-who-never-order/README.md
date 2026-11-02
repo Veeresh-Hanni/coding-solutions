@@ -78,20 +78,20 @@ Output:
 ## Solution
 
 **Language:** SQL  
-**Runtime:** 979 ms (beats 6.39%)  
+**Runtime:** 886 ms (beats 9.48%)  
 **Memory:** 0B (beats 100.00%)  
-**Submitted:** 2026-11-02T09:05:42.906Z  
+**Submitted:** 2026-11-02T09:04:24.567Z  
 
 ```sql
 # Write your MySQL query statement below
--- SELECT name as Customers From Customers WHERE id NOT in 
--- (SELECT c.id as id FROM Customers c 
--- JOIN Orders o on c.id = o.customerId);
+SELECT name as Customers From Customers WHERE id NOT in 
+(SELECT c.id as id FROM Customers c 
+JOIN Orders o on c.id = o.customerId);
 
-SELECT c.name AS Customers FROM Customers c
-LEFT JOIN Orders o
-ON c.id = o.customerId
-WHERE o.customerId IS NULL
+-- select c.name as Customers from Customers c
+-- left join Orders o
+-- on c.id = o.customerId
+-- where o.customerId is null
 ```
 
 ---
