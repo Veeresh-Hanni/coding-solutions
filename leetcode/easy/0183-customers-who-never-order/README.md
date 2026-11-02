@@ -78,9 +78,9 @@ Output:
 ## Solution
 
 **Language:** SQL  
-**Runtime:** 1251 ms (beats 5.00%)  
+**Runtime:** 979 ms (beats 6.39%)  
 **Memory:** 0B (beats 100.00%)  
-**Submitted:** 2026-11-02T09:04:03.032Z  
+**Submitted:** 2026-11-02T09:05:42.906Z  
 
 ```sql
 # Write your MySQL query statement below
@@ -88,10 +88,10 @@ Output:
 -- (SELECT c.id as id FROM Customers c 
 -- JOIN Orders o on c.id = o.customerId);
 
-select c.name as Customers from Customers c
-left join Orders o
-on c.id = o.customerId
-where o.customerId is null
+SELECT c.name AS Customers FROM Customers c
+LEFT JOIN Orders o
+ON c.id = o.customerId
+WHERE o.customerId IS NULL
 ```
 
 ---
