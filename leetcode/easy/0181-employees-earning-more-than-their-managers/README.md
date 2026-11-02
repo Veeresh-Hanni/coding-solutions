@@ -1,0 +1,74 @@
+# Employees Earning More Than Their Managers
+
+![Difficulty](https://img.shields.io/badge/Difficulty-Easy-green)
+
+## Problem
+
+Table: `Employee`
+
+```
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| name        | varchar |
+| salary      | int     |
+| managerId   | int     |
++-------------+---------+
+id is the primary key (column with unique values) for this table.
+Each row of this table indicates the ID of an employee, their name, salary, and the ID of their manager.
+
+```
+
+ 
+
+Write a solution to find the employees who earn more than their managers.
+
+Return the result table in  **any order**.
+
+The result format is in the following example.
+
+ 
+
+ **Example 1:** 
+
+```
+Input: 
+Employee table:
++----+-------+--------+-----------+
+| id | name  | salary | managerId |
++----+-------+--------+-----------+
+| 1  | Joe   | 70000  | 3         |
+| 2  | Henry | 80000  | 4         |
+| 3  | Sam   | 60000  | Null      |
+| 4  | Max   | 90000  | Null      |
++----+-------+--------+-----------+
+Output: 
++----------+
+| Employee |
++----------+
+| Joe      |
++----------+
+Explanation: Joe is the only employee who earns more than his manager.
+
+```
+
+## Solution
+
+**Language:** SQL  
+**Runtime:** 532 ms (beats 19.18%)  
+**Memory:** 0B (beats 100.00%)  
+**Submitted:** 2026-11-02T08:49:05.555Z  
+
+```sql
+# Write your MySQL query statement below
+SELECT e2.name as Employee From employee e1 
+
+JOIN Employee e2 ON e1.id = e2.managerId
+
+WHERE e2.salary > e1.salary;
+```
+
+---
+
+[View on LeetCode](https://leetcode.com/problems/employees-earning-more-than-their-managers/)
