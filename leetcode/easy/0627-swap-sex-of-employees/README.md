@@ -62,17 +62,20 @@ Explanation:
 ## Solution
 
 **Language:** SQL  
-**Runtime:** 334 ms (beats 16.01%)  
+**Runtime:** 311 ms (beats 23.61%)  
 **Memory:** 0B (beats 100.00%)  
-**Submitted:** 2026-11-02T10:22:34.867Z  
+**Submitted:** 2026-11-02T10:23:20.105Z  
 
 ```sql
 # Write your MySQL query statement below
+-- UPDATE Salary 
+-- SET sex = CASE 
+--     WHEN sex = 'm' THEN 'f'
+--     ELSE 'm'
+-- END;
+
 UPDATE Salary 
-SET sex = CASE 
-    WHEN sex = 'm' THEN 'f'
-    ELSE 'm'
-END;
+SET sex = IF(sex = 'm', 'f', 'm');
 ```
 
 ---
