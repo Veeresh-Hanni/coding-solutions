@@ -19,11 +19,11 @@ WITH tmp_first_login as (
     FROM Activity
     GROUP BY player_id
 )
-
 SELECT
     ROUND(
         COUNT(DISTINCT a.player_id) /
-        (SELECT COUNT(DISTINCT player_id) FROM Activity),
+        (SELECT COUNT(DISTINCT player_id) FROM Activity)
+        ,
         2
     ) AS fraction
 FROM Activity a
