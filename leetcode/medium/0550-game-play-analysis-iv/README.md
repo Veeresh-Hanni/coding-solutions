@@ -55,12 +55,33 @@ Only the player with id 1 logged back in after the first day he had logged in so
 ## Solution
 
 **Language:** SQL  
-**Runtime:** 735 ms (beats 28.76%)  
+**Runtime:** 2087 ms (beats 10.24%)  
 **Memory:** 0B (beats 100.00%)  
-**Submitted:** 2026-11-04T14:39:42.284Z  
+**Submitted:** 2026-11-04T14:46:00.057Z  
 
 ```sql
 # Write your MySQL query statement below
+-- SELECT
+--     ROUND(
+--         COUNT(DISTINCT a.player_id) /
+--         (SELECT COUNT(DISTINCT player_id) FROM Activity),
+--         2
+--     ) AS fraction
+-- FROM Activity a
+-- JOIN (
+--     SELECT player_id, MIN(event_date) AS first_login
+--     FROM Activity
+--     GROUP BY player_id
+-- ) f
+-- ON a.player_id = f.player_id
+-- AND a.event_date = DATE_ADD(f.first_login, INTERVAL 1 DAY);
+
+WITH tmp_first_login as (
+    SELECT player_id, MIN(event_date) as first_login 
+    FROM Activity
+    GROUP BY player_id
+)
+
 SELECT
     ROUND(
         COUNT(DISTINCT a.player_id) /
@@ -68,11 +89,7 @@ SELECT
         2
     ) AS fraction
 FROM Activity a
-JOIN (
-    SELECT player_id, MIN(event_date) AS first_login
-    FROM Activity
-    GROUP BY player_id
-) f
+JOIN tmp_first_login f
 ON a.player_id = f.player_id
 AND a.event_date = DATE_ADD(f.first_login, INTERVAL 1 DAY);
 ```
