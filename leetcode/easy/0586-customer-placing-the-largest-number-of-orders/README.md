@@ -60,18 +60,48 @@ So the result is customer_number 3.
 ## Solution
 
 **Language:** SQL  
-**Runtime:** 92 ms  
-**Memory:** 0B  
-**Submitted:** 2026-11-04T14:04:20.733Z  
+**Runtime:** 541 ms (beats 43.50%)  
+**Memory:** 0B (beats 100.00%)  
+**Submitted:** 2026-11-04T14:05:38.250Z  
 
 ```sql
 # Write your MySQL query statement below
 
+-- SELECT customer_number
+-- FROM Orders
+-- GROUP BY customer_number
+-- HAVING COUNT(order_number) = (
+--     SELECT MAX(order_count)
+--     FROM (
+--         SELECT COUNT(order_number) AS order_count
+--         FROM Orders
+--         GROUP BY customer_number
+--     ) AS temp
+-- );
+
+-- SELECT customer_number
+-- FROM Orders
+-- GROUP BY customer_number
+-- ORDER BY COUNT(order_number) DESC
+-- LIMIT 1;
+
+WITH customer_orders AS (
+    SELECT
+        customer_number,
+        COUNT(order_number) AS total_orders
+    FROM Orders
+    GROUP BY customer_number
+),
+ranked AS (
+    SELECT *,
+        DENSE_RANK() OVER (
+            ORDER BY total_orders DESC
+        ) AS rnk
+    FROM customer_orders
+)
 SELECT customer_number
-FROM Orders
-GROUP BY customer_number
-ORDER BY COUNT(order_number) DESC
-LIMIT 1;
+FROM ranked
+WHERE rnk = 1;
 ```
 
 ---
