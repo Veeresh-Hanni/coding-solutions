@@ -60,9 +60,9 @@ So the result is customer_number 3.
 ## Solution
 
 **Language:** SQL  
-**Runtime:** 748 ms (beats 9.57%)  
-**Memory:** 0B (beats 100.00%)  
-**Submitted:** 2026-11-04T14:03:55.345Z  
+**Runtime:** 92 ms  
+**Memory:** 0B  
+**Submitted:** 2026-11-04T14:04:20.733Z  
 
 ```sql
 # Write your MySQL query statement below
@@ -70,14 +70,8 @@ So the result is customer_number 3.
 SELECT customer_number
 FROM Orders
 GROUP BY customer_number
-HAVING COUNT(order_number) = (
-    SELECT MAX(order_count)
-    FROM (
-        SELECT COUNT(order_number) AS order_count
-        FROM Orders
-        GROUP BY customer_number
-    ) AS temp
-);
+ORDER BY COUNT(order_number) DESC
+LIMIT 1;
 ```
 
 ---
