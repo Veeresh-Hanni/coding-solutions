@@ -61,20 +61,21 @@ Note that if the number of students is odd, there is no need to change the last 
 ## Solution
 
 **Language:** SQL  
-**Runtime:** 441 ms (beats 28.15%)  
+**Runtime:** 463 ms (beats 21.68%)  
 **Memory:** 0B (beats 100.00%)  
-**Submitted:** 2026-11-05T06:43:21.520Z  
+**Submitted:** 2026-11-05T06:50:12.780Z  
 
 ```sql
 # Write your MySQL query statement below
 SELECT 
     CASE 
-        WHEN id % 2 = 1 AND id = (SELECT MAX(id) FROM Seat) THEN id  -- Last row (if odd) stays same
-        WHEN id % 2 = 1 THEN id + 1                                  -- Odd IDs move down
-        ELSE id - 1                                                  -- Even IDs move up
+        WHEN id % 2 = 1 AND id = total_rows THEN id
+        WHEN id % 2 = 1 THEN id + 1
+        ELSE id - 1
     END AS id,
     student
-FROM Seat
+FROM Seat, 
+     (SELECT COUNT(*) AS total_rows FROM Seat) AS temp
 ORDER BY id;
 ```
 
