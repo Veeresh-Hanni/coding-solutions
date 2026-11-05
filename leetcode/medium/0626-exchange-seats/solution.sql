@@ -1,10 +1,11 @@
 # Write your MySQL query statement below
 SELECT 
     CASE 
-        WHEN id % 2 = 1 AND id = (SELECT MAX(id) FROM Seat) THEN id  -- Last row (if odd) stays same
-        WHEN id % 2 = 1 THEN id + 1                                  -- Odd IDs move down
-        ELSE id - 1                                                  -- Even IDs move up
+        WHEN id % 2 = 1 AND id = total_rows THEN id
+        WHEN id % 2 = 1 THEN id + 1
+        ELSE id - 1
     END AS id,
     student
-FROM Seat
+FROM Seat, 
+     (SELECT COUNT(*) AS total_rows FROM Seat) AS temp
 ORDER BY id;
