@@ -59,14 +59,14 @@ Output:
 ## Solution
 
 **Language:** SQL  
-**Runtime:** 876 ms (beats 24.98%)  
+**Runtime:** 721 ms (beats 74.22%)  
 **Memory:** 0B (beats 100.00%)  
-**Submitted:** 2026-11-08T14:58:18.054Z  
+**Submitted:** 2026-11-08T14:59:57.813Z  
 
 ```sql
 # Write your MySQL query statement below
-SELECT t.product_id , t.year as first_year, t.quantity, t.price FROM (SELECT s.*, DENSE_RANK() OVER (PARTITION BY s.product_id ORDER BY s.year) as dnk FROM Sales s) as t
-WHERE dnk = 1; 
+SELECT t.product_id , t.year as first_year, t.quantity, t.price FROM (SELECT s.*, RANK() OVER (PARTITION BY s.product_id ORDER BY s.year) as dnk FROM Sales s) as t
+WHERE dnk = 1;
 ```
 
 ---
