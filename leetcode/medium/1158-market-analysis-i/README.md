@@ -111,22 +111,36 @@ Output:
 
 ## Solution
 
-**Language:** SQL  
-**Runtime:** 1165 ms (beats 91.89%)  
-**Memory:** 0B (beats 100.00%)  
-**Submitted:** 2026-11-23T05:25:19.013Z  
+**Language:** Python  
+**Runtime:** 425 ms (beats 23.91%)  
+**Memory:** 78.1 MB (beats 6.12%)  
+**Submitted:** 2026-11-23T05:53:29.072Z  
 
-```sql
-# Write your MySQL query statement below
-SELECT
-    u.user_id AS buyer_id,
-    u.join_date,
-    COUNT(o.order_id) AS orders_in_2019
-FROM Users u
-LEFT JOIN Orders o
-    ON u.user_id = o.buyer_id
-    AND YEAR(o.order_date) = 2019
-GROUP BY u.user_id, u.join_date;
+```py
+import pandas as pd
+
+def market_analysis(users: pd.DataFrame, orders: pd.DataFrame, items: pd.DataFrame) -> pd.DataFrame:
+    # Filter orders from 2019
+    orders_2019 = orders[
+        orders['order_date'].dt.year == 2019
+    ]
+
+    # LEFT JOIN Users with filtered Orders
+    result = users.merge(
+        orders_2019,
+        how='left',
+        left_on='user_id',
+        right_on='buyer_id'
+    )
+
+    # Group by user and count orders
+    result = (
+        result.groupby(['user_id', 'join_date'], as_index=False)
+        .agg(orders_in_2019=('order_id', 'count'))
+        .rename(columns={'user_id': 'buyer_id'})
+    )
+
+    return result
 ```
 
 ---
